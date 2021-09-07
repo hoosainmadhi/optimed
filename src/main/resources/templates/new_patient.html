@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1"></meta>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+      crossorigin="anonymous">
+
+<title>Patient Details</title>
+</head>
+<body>
+<div align="left">
+    <h1>Patient Details</h1>
+    <form action="#" th:action="@{/save_patient}" method="post" th:object="${patient}">
+            <p>Patient Number: <input type="text" th:field="*{patientNumber}" /></p>
+            <p>Patient Name: <input type="text" th:field="*{patientName}" /></p>
+            <p>Medical Aid: <input type="text" th:field="*{medicalAid}" /></p>
+            <p>Medical Aid Number: <input type="text" th:field="*{medicalAidNumber}" /></p>
+	    <input type="submit" value="Add Patient" /> <input type="reset" value="Reset" />
+    </form>
+        <a href="/patients">Patients</a>
+</div>
+</body>
+</html>
