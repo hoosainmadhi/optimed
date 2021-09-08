@@ -24,12 +24,12 @@ public class Dispense {
             name = "dispense_sequence",
             sequenceName = "dispense_sequence",
             allocationSize = 1
-            
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "dispense_sequence"
     )
+
     private Long dispenseId;
     private String icd10;
     private String tariffCode;

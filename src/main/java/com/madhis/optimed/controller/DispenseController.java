@@ -6,14 +6,12 @@ import com.madhis.optimed.entity.Patient;
 import com.madhis.optimed.service.ConsultService;
 import com.madhis.optimed.service.DispenseService;
 import com.madhis.optimed.service.PatientService;
-import javax.security.auth.message.callback.PrivateKeyCallback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class DispenseController {
@@ -40,6 +38,7 @@ public class DispenseController {
 		    consult.getDispenses().add(dispense);
 		    dispenseService.addDispense(dispense);
 		}
+		model.addAttribute("dispense",new Dispense());
 		return "dispense";
 	} 
 }

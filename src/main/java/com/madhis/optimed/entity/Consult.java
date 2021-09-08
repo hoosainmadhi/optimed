@@ -33,14 +33,12 @@ public class Consult {
             name = "consult_sequence",
             sequenceName = "consult_sequence",
             allocationSize = 1
-            
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "consult_sequence"
     )
     private Long consultId;
-       
     private String consultDate;
     private String reservationNumber;
    

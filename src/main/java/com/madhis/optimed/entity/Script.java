@@ -32,9 +32,11 @@ public class Script {
             generator = "script_sequence"
     )
     
-    
     private long scriptId;
     private long consultId;
-    private String right_eye;
-    private String left_eye;
-}
+    private String rightEye;
+    private String leftEye;
+    private String addition;
+    private String pd;
+}   
+    

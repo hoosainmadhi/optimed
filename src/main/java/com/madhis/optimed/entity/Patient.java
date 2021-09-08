@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -44,17 +46,23 @@ public class Patient {
             strategy = GenerationType.SEQUENCE,
             generator = "patient_sequence"
     )
+
+    
     private Long patientId;
     
     @Column(name = "patientNumber",
             nullable = false
     )
     private String patientNumber;
-    
+
+    @NotEmpty(message = "User's name cannot be empty.")
     private String patientName;
     private String medicalAid;
     private String medicalAidNumber;
-    
+    private String dob;
+    private String postalAddress;
+    private String telNo;
+    private String principalMember;
     // Define 1-Many Relation Patient can come for many consults.
     @OneToMany(
 	    cascade = CascadeType.ALL,
