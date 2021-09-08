@@ -54,6 +54,12 @@ public class Patient {
     private String patientName;
     private String medicalAid;
     private String medicalAidNumber;
+    private String dob;
+    private String principalMember;
+    private String telNo;
+    private String email;
+    private String postalAddress;
+    
     
     // Define 1-Many Relation Patient can come for many consults.
     @OneToMany(

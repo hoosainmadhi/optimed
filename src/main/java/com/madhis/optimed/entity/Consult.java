@@ -3,12 +3,14 @@ package com.madhis.optimed.entity;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -43,10 +45,6 @@ public class Consult {
        
     private String consultDate;
     private String reservationNumber;
-   
-//   @ManyToOne
-//   private Patient patient;
-    
  
    //Define 1-Many  Relation consult has many dispense items 
     @OneToMany(
@@ -56,16 +54,13 @@ public class Consult {
             name = "consult_id",
             referencedColumnName = "consultId"
     )
-    
     private List<Dispense> dispenses;// 1 consult has List of dispensed Items
-    
+   
+    //https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/ 
     // Define 1-1 Patient has 1 script per  consult.
     @OneToOne(
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(
-            name = "consult_id",
-            referencedColumnName = "consultId"
+    		mappedBy = "consult",
+    		cascade = CascadeType.ALL
     )
     private Script script;// 1 consult has 1 script  
 
