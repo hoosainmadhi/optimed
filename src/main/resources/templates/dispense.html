@@ -24,7 +24,6 @@
 
     <br>
 
-    <h2>Script</h2>
     
     
     
@@ -77,6 +76,29 @@
    </table>
 	
 	<br>
+
+
+    <h2>Script</h2>
+      <form action="#" th:action="@{'/patient/' + ${patient.patientId} + '/consult/' + ${consult.consultId}}" method="post" th:object="${script}">
+       <table border="1" cellpadding="10px" cellspacing="5px">    
+       <tr>    
+              <th>leftEye</th>    
+              <th>rightEye</th>    
+
+       </tr>   
+       <tr>
+              <td> <input type="text" th:field="${script.rightEye}" /></td>
+              <td> <input type="text" th:field="${script.leftEye}" /></td>
+       </tr>
+       <tr>
+              <td><input type="submit" value="Add Script" /></td>
+	      <td> <input type="reset" value="Reset" /></td>
+       </tr>
+       </table>	  
+     </form>
+
+
+
 	
 	<a href="/new_patient">Add New Patient</a> <br>
         <a href="/patients">Patients</a>

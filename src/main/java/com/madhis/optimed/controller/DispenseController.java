@@ -3,9 +3,12 @@ package com.madhis.optimed.controller;
 import com.madhis.optimed.entity.Consult;
 import com.madhis.optimed.entity.Dispense;
 import com.madhis.optimed.entity.Patient;
+import com.madhis.optimed.entity.Script;
 import com.madhis.optimed.service.ConsultService;
 import com.madhis.optimed.service.DispenseService;
 import com.madhis.optimed.service.PatientService;
+import com.madhis.optimed.service.ScriptService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +28,18 @@ public class DispenseController {
 	@Autowired
 	private ConsultService consultService;
 	
+	@Autowired
+	private ScriptService scriptService;
+	
 	
 //	@RequestMapping(value="/patient/{pid}/consult/{cid}",method = {RequestMethod.POST})
 	@RequestMapping(value="/patient/{pid}/consult/{cid}")
-        public String dispenseForm(Model model, @ModelAttribute("dispense") Dispense dispense,@PathVariable(value="pid") Long patientId, @PathVariable(value="cid") Long consultId){
+        public String dispenseForm(Model model, 
+        		@ModelAttribute("script") Script script,
+        		@ModelAttribute("dispense") Dispense dispense,
+        		@PathVariable(value="pid") Long patientId, 
+        		@PathVariable(value="cid") Long consultId){
+		
 		Patient patient = patientService.findPatientById(patientId);
 		Consult consult = consultService.findByConsultId(consultId);
 		
@@ -38,6 +49,10 @@ public class DispenseController {
 		    consult.getDispenses().add(dispense);
 		    dispenseService.addDispense(dispense);
 		}
+		
+		consult.getScript();
+		scriptService.saveScript(script);
+	
 		model.addAttribute("dispense",new Dispense());
 		return "dispense";
 	} 

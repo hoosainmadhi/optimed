@@ -29,7 +29,7 @@ public class Dispense {
             strategy = GenerationType.SEQUENCE,
             generator = "dispense_sequence"
     )
-
+    
     private Long dispenseId;
     private String icd10;
     private String tariffCode;
