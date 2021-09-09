@@ -41,10 +41,6 @@ public class Consult {
     private Long consultId;
     private String consultDate;
     private String reservationNumber;
-   
-//   @ManyToOne
-//   private Patient patient;
-    
  
    //Define 1-Many  Relation consult has many dispense items 
     @OneToMany(
@@ -56,15 +52,5 @@ public class Consult {
     )
     
     private List<Dispense> dispenses;// 1 consult has List of dispensed Items
-    
-    // Define 1-1 Patient has 1 script per  consult.
-    @OneToOne(
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(
-            name = "consult_id",
-            referencedColumnName = "consultId"
-    )
-    private Script script;// 1 consult has 1 script  
 
 }
