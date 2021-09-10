@@ -35,7 +35,6 @@ public class DispenseController {
 //	@RequestMapping(value="/patient/{pid}/consult/{cid}",method = {RequestMethod.POST})
 	@RequestMapping(value="/patient/{pid}/consult/{cid}")
         public String dispenseForm(Model model, 
-        		@ModelAttribute("script") Script script,
         		@ModelAttribute("dispense") Dispense dispense,
         		@PathVariable(value="pid") Long patientId, 
         		@PathVariable(value="cid") Long consultId){
@@ -49,9 +48,6 @@ public class DispenseController {
 		    consult.getDispenses().add(dispense);
 		    dispenseService.addDispense(dispense);
 		}
-		
-		consult.getScript();
-		scriptService.saveScript(script);
 	
 		model.addAttribute("dispense",new Dispense());
 		return "dispense";

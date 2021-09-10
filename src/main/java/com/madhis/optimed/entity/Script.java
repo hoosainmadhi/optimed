@@ -45,7 +45,7 @@ public class Script {
 
 //	@OneToOne(fetch = FetchType.LAZY)
 //	@MapsId
-//	@JoinColumn(name = "consult_id")
+//	@JoinColumn(name = "consultId")
 //	private Consult consult;
+	
 }   
-

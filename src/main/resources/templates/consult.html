@@ -1,67 +1,102 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
-      rel="stylesheet" 
-      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
-      crossorigin="anonymous">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
 <meta charset="ISO-8859-1"></meta>
 
 <title>Consult Details</title>
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
 </head>
 <body>
-
 <body>
-<div align="left">
-	
-    <h2>Patient Detail</h2>
-     <p th:text="'Patient Id: ' + ${patient.patientId}"/>
-     <p th:text="'Patient Number: ' + ${patient.patientNumber}" />
-     <p th:text="'Patient Name: ' + ${patient.patientName}" />
-     <p th:text="'Medical Aid Number: ' + ${patient.medicalAidNumber}" />
-     <p th:text="'Medical Aid: ' + ${patient.medicalAid}" /> 
+	<div align="left">
 
-    <br>
+		<h2>Patient Detail</h2>
+		<p th:text="'Patient Id: ' + ${patient.patientId}" />
+		<p th:text="'Patient Number: ' + ${patient.patientNumber}" />
+		<p th:text="'Patient Name: ' + ${patient.patientName}" />
+		<p th:text="'Medical Aid Number: ' + ${patient.medicalAidNumber}" />
+		<p th:text="'Medical Aid: ' + ${patient.medicalAid}" />
 
-    <h2>Consult Details</h2>
+		<br>
 
-    <tr>
-	    
-     <form action="#" th:action="@{'/consult/' + ${patient.patientId} + '/dispense'}" method="post" th:object="${consult}"> 
-       <p>Consult Date: <input type="text" th:field="${consult.consultDate}" /></p>
-       <p>Reservation Number : <input type="text" th:field="*{reservationNumber}" /></p>
-     </tr>
-      <tr><input type="submit" value="Dispense Details" /> <input type="reset" value="Reset" /></tr>
-     </form>
-    
-        <br>    
-    	<h2>Previous Consults</h2>
-       
-	<!--<someHtmlTag th:each="item : ${items}">-->
-	<!--</someHtmlTag>-->	
-   <table border="1" cellpadding="10px" cellspacing="5px">
-   <thead>
-	   <th>Consult Date</th>
-	   <th>Reservation Number</th>
-	   <th>dispense details</th>
+		<h2>Consult Details</h2>
 
-   </thead>	   
-   <tr th:each="consult: ${patient.consults}" >
-	   <td th:text="${consult.consultDate}"> </td>
-	   <td th:text="${consult.reservationNumber}"></td>
-           <td>
-              <a th:href="@{/patient/{pid}/consult/{cid}(pid=${patient.patientId},cid=${consult.consultId})}">Dispense Details</a>
-              <!--<a th:href="@{/patient/{id}(id=${patient.patientId})} + '/consult'">Consult</a>-->
-	   <td>
-   </tr>
-   </table>
-	
-	<br>
-	
-	<a href="/new_patient">Add New Patient</a> <br>
-        <a href="/patients">Patients</a>
-</div>
+		<form action="#"
+			th:action="@{'/consult/' + ${patient.patientId} + '/dispense'}"
+			method="post" th:object="${consult}">
+			<table border="1" cellpadding="10px" cellspacing="5px">
+				<tr>
+					<th>Consult Date</th>
+					<th>Reservation Number</th>
+				</tr>
+				<tr>
+					<td><input type="text" th:field="${consult.consultDate}" /></td>
+					<td><input type="text" th:field="${consult.reservationNumber}" /></td>
+				</tr>
+				<tr>
+					<th>Script</th>
+				</tr>
+				<tr>
+					<th>Left Eye</th>
+					<td><input type="text" th:field="${consult.script.leftEye}" /></td>
+					
+				</tr>
+				<tr>
+					<th>Right Eye</th>
+					<td><input type="text" th:field="${consult.script.rightEye}" /></td>
+					
+				</tr>
+				<tr>
+					<th>PD</th>
+					<td><input type="text" th:field="${consult.script.pd}" /></td>
+					
+				</tr>
+				<tr>
+					<th>Add</th>
+					<td><input type="text" th:field="${consult.script.addition}" /></td>
+					
+				</tr>
+			<tr>
+				<td><input type="submit" value="Dispense Details" /></td>
+				<td><input type="reset" value="Reset" /></td>
+			</tr>
+			</table>
+		</form>
+		<br>
+
+
+
+		<h2>Previous Consults</h2>
+
+
+
+		<!--<someHtmlTag th:each="item : ${items}">-->
+		<!--</someHtmlTag>-->
+		<table border="1" cellpadding="10px" cellspacing="5px">
+			<thead>
+				<th>Consult Date</th>
+				<th>Reservation Number</th>
+				<th>dispense details</th>
+
+			</thead>
+			<tr th:each="consult: ${patient.consults}">
+				<td th:text="${consult.consultDate}"></td>
+				<td th:text="${consult.reservationNumber}"></td>
+				<td><a
+					th:href="@{/patient/{pid}/consult/{cid}(pid=${patient.patientId},cid=${consult.consultId})}">Dispense
+						Details</a> <!--<a th:href="@{/patient/{id}(id=${patient.patientId})} + '/consult'">Consult</a>-->
+				<td>
+			</tr>
+		</table>
+
+		<br> <a href="/new_patient">Add New Patient</a> <br> <a
+			href="/patients">Patients</a>
+	</div>
 </body>
 </html>

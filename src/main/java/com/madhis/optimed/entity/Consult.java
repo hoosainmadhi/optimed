@@ -55,9 +55,9 @@ public class Consult {
     )
     private List<Dispense> dispenses;// 1 consult has List of dispensed Items
    
-    //OneToOne
     
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "script_id")
-    private Script script;
+    //https://techrocking.com/one-to-one-mapping-in-jpa/
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "consult_id")// this is a foreign key
+	private Script script;
 }
