@@ -38,7 +38,7 @@ public class ConsultController {
 		Patient patient = patientService.findPatientById(patientId);
 		model.addAttribute(patient);
 
-//		System.out.println("script = " + consult.getScript());
+		System.out.println("script = " + consult.getScript());
 		patient.getConsults().add(consult);
 		consult.setScript(consult.getScript());
 		System.out.println("consult = " + consult);

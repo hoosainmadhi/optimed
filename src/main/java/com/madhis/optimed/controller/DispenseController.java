@@ -28,9 +28,6 @@ public class DispenseController {
 	@Autowired
 	private ConsultService consultService;
 	
-	@Autowired
-	private ScriptService scriptService;
-	
 	
 //	@RequestMapping(value="/patient/{pid}/consult/{cid}",method = {RequestMethod.POST})
 	@RequestMapping(value="/patient/{pid}/consult/{cid}")
@@ -48,7 +45,6 @@ public class DispenseController {
 		    consult.getDispenses().add(dispense);
 		    dispenseService.addDispense(dispense);
 		}
-	
 		model.addAttribute("dispense",new Dispense());
 		return "dispense";
 	} 
