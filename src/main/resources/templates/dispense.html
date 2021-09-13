@@ -69,7 +69,11 @@
 				<td th:text="${dispense.price}"></td>
 			</tr>
 			<tr>
-				<!--  td th:text="${#aggregates.sum(dispense![price])}"</td>-->
+				<td> Total </td>
+				<td> &nbsp; </td>
+				<td> &nbsp; </td>
+				<td th:text="${totalPerConsult}"> </td>
+				
 			</tr>
 			<!--<tr th:each="consult: ${patient.consults}" >-->
 			<!--<td th:text="${consult.consultDate}"> </td>-->

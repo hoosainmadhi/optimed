@@ -28,6 +28,7 @@ public class DispenseController {
 	@Autowired
 	private ConsultService consultService;
 	
+	private float total;
 	
 //	@RequestMapping(value="/patient/{pid}/consult/{cid}",method = {RequestMethod.POST})
 	@RequestMapping(value="/patient/{pid}/consult/{cid}")
@@ -44,7 +45,11 @@ public class DispenseController {
 		if(dispense.getDispenseItem() != null){
 		    consult.getDispenses().add(dispense);
 		    dispenseService.addDispense(dispense);
+		    System.out.println("dispense.price = " + dispense.getPrice());
 		}
+		dispenseService.totalPerConsultId(consultId);
+		System.out.println("dispenseService.totalPerConsultId(consultId) = " + dispenseService.totalPerConsultId(consultId));
+		model.addAttribute("totalPerConsult",dispenseService.totalPerConsultId(consultId));
 		model.addAttribute("dispense",new Dispense());
 		return "dispense";
 	} 

@@ -57,7 +57,8 @@ public class Consult {
    
     
     //https://techrocking.com/one-to-one-mapping-in-jpa/
+    //https://thorben-janssen.com/ultimate-guide-association-mappings-jpa-hibernate/#oneToOne
     @OneToOne(cascade =  CascadeType.ALL)
-    @JoinColumn(name = "fk_script") //this is a foreign key
+    @JoinColumn(name = "fk_script_id") //this is a foreign key references scriptId in Script
 	private Script script;
 }
