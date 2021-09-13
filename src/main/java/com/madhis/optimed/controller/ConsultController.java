@@ -43,7 +43,7 @@ public class ConsultController {
 		consult.setScript(consult.getScript());
 		System.out.println("consult = " + consult);
 		consultService.addConsult(consult);
-		//	scriptService.saveScript(script);
+		//scriptService.saveScript(script);
 		return "dispense";
 	}
 
