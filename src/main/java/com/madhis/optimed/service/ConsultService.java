@@ -6,5 +6,7 @@ public interface ConsultService {
     
     public Consult addConsult(Consult consult);
       
-    public Consult findByConsultId(Long consultId);    
+    public Consult findByConsultId(Long consultId);
+
+	public void deleteConsultById(Long consultId);    
 }

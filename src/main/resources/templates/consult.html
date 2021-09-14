@@ -83,6 +83,7 @@
 				<th>Consult Date</th>
 				<th>Reservation Number</th>
 				<th>dispense details</th>
+				<th>delete consults</th>
 
 			</thead>
 			<tr th:each="consult: ${patient.consults}">
@@ -92,7 +93,10 @@
 				<td><a
 					th:href="@{/patient/{pid}/consult/{cid}(pid=${patient.patientId},cid=${consult.consultId})}">Dispense
 						Details</a> <!--<a th:href="@{/patient/{id}(id=${patient.patientId})} + '/consult'">Consult</a>-->
-				<td>
+				</td>
+				<td align="center"><a 
+				    th:href="@{/delete/patient/{pid}/consult/{cid}(pid=${patient.patientId},cid=${consult.consultId})}">x</a>
+				    </td>
 			</tr>
 		</table>
 

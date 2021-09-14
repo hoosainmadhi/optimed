@@ -25,7 +25,9 @@ public class ConsultController {
 
 	@Autowired
 	private PatientService patientService;	
-
+	
+	@Autowired
+	private PatientController patientController;
 
 	@RequestMapping(value="/consult/{id}/dispense",method = {RequestMethod.POST})
 	public String consultForm(Model model, 
@@ -43,6 +45,19 @@ public class ConsultController {
 		System.out.println("consult = " + consult);
 		consultService.addConsult(consult);
 		return "dispense";
+	}
+
+	@RequestMapping(value = "/delete/patient/{pid}/consult/{cid}")
+	public String deleteDispenseById(Model model,
+									@PathVariable(value = "pid") Long patientId,
+									@PathVariable(value = "cid") Long consultId) {
+		consultService.deleteConsultById(consultId);
+//		model.addAttribute(patientId);
+		
+		Consult consult = new Consult();
+		model.addAttribute(consult);
+		return patientController.showConsultForm(model, patientId);
+
 	}
 
 }

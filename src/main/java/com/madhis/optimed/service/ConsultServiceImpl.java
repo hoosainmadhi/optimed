@@ -23,4 +23,8 @@ public class ConsultServiceImpl implements ConsultService {
     	return consultRepository.findConsultByConsultId(consultId);
 	
     }    
+    @Override
+	public void deleteConsultById(Long consultId) {
+    	       consultRepository.deleteById(consultId);
+    }    
 }
