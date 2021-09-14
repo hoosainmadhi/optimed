@@ -6,5 +6,7 @@ public interface DispenseService {
 	
 	public Dispense addDispense(Dispense dispense);
 	
-	public float totalPerConsultId(Long consultId); 
+	public java.lang.Float totalPerConsultId(Long consultId);
+
+	public void deleteDispenseById(Long dispenseId); 
 }

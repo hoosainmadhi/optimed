@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class DispenseController {
@@ -39,7 +41,7 @@ public class DispenseController {
 		
 		Patient patient = patientService.findPatientById(patientId);
 		Consult consult = consultService.findByConsultId(consultId);
-		
+			
 		model.addAttribute("consult",consult);
 		model.addAttribute("patient",patient);
 		if(dispense.getDispenseItem() != null){
@@ -47,10 +49,24 @@ public class DispenseController {
 		    dispenseService.addDispense(dispense);
 		    System.out.println("dispense.price = " + dispense.getPrice());
 		}
-		dispenseService.totalPerConsultId(consultId);
+		
 		System.out.println("dispenseService.totalPerConsultId(consultId) = " + dispenseService.totalPerConsultId(consultId));
 		model.addAttribute("totalPerConsult",dispenseService.totalPerConsultId(consultId));
 		model.addAttribute("dispense",new Dispense());
 		return "dispense";
-	} 
+	}
+	
+	@RequestMapping(value = "/delete/patient/{pid}/consult/{cid}/dispense/{did}")
+	public String deleteDispenseById(Model model,@PathVariable(value = "pid") Long patientId,
+									@PathVariable(value = "cid") Long consultId,
+									@PathVariable(value = "did") Long dispenseId) {
+		dispenseService.deleteDispenseById(dispenseId);
+		model.addAttribute(consultId);
+		model.addAttribute(patientId);
+		
+		Dispense dispense = new Dispense();
+		return dispenseForm(model, dispense, patientId, consultId);
+
+	}
+	
 }

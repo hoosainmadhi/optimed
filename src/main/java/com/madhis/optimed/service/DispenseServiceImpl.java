@@ -17,8 +17,13 @@ public class DispenseServiceImpl implements DispenseService {
 	}
 
 	@Override
-	public float totalPerConsultId(Long consultId) {
+	public java.lang.Float totalPerConsultId(Long consultId) {
 		return dispenseRepository.totalPerConsultId(consultId);
 	}
+
+	@Override
+	public void deleteDispenseById(Long dispenseId) {
+		 dispenseRepository.deleteById(dispenseId);
+	} 
 	
 }

@@ -5,6 +5,7 @@ import com.madhis.optimed.entity.Consult;
 import com.madhis.optimed.entity.Patient;
 import com.madhis.optimed.entity.Script;
 import com.madhis.optimed.service.ConsultService;
+import com.madhis.optimed.service.DispenseService;
 import com.madhis.optimed.service.PatientService;
 import com.madhis.optimed.service.ScriptService;
 
@@ -24,9 +25,7 @@ public class ConsultController {
 
 	@Autowired
 	private PatientService patientService;	
-	
-	@Autowired
-	private ScriptService scriptService;
+
 
 	@RequestMapping(value="/consult/{id}/dispense",method = {RequestMethod.POST})
 	public String consultForm(Model model, 
@@ -43,14 +42,7 @@ public class ConsultController {
 		consult.setScript(consult.getScript());
 		System.out.println("consult = " + consult);
 		consultService.addConsult(consult);
-		//scriptService.saveScript(script);
 		return "dispense";
 	}
 
-
-	//	@RequestMapping(value="consult/{id}",method = {RequestMethod.POST})
-	//	public String consultForm(Model model, @PathVariable(value="id") Long patientId){
-	//		  model.addAttribute(patientService.getPatientById(patientId));
-	//		  return "consult";
-	//	}
 }

@@ -4,7 +4,9 @@ package com.madhis.optimed.repository;
 import com.madhis.optimed.entity.Dispense;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface DispenseRepository extends JpaRepository<Dispense, Long>{
 
 	
@@ -15,7 +17,8 @@ public interface DispenseRepository extends JpaRepository<Dispense, Long>{
             		+ "and  c.consult_id=?1 ",
             nativeQuery = true
     )
-	float totalPerConsultId(Long consultId);
+	java.lang.Float totalPerConsultId(Long consultId);
+
 
 	
 }
