@@ -52,7 +52,6 @@ public class ConsultController {
 									@PathVariable(value = "pid") Long patientId,
 									@PathVariable(value = "cid") Long consultId) {
 		consultService.deleteConsultById(consultId);
-//		model.addAttribute(patientId);
 		
 		Consult consult = new Consult();
 		model.addAttribute(consult);
