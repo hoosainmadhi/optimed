@@ -54,6 +54,8 @@ public class PatientController {
 		model.addAttribute(patient.getConsults()); // previous consults
 		return "consult";
 	}
+	
+	
 
 	@RequestMapping(value = "/delete/{id}")
 	public String deletePatientId(@PathVariable(value = "id") Long patientId) {
@@ -82,6 +84,7 @@ public class PatientController {
 		model.addAttribute("patient", patientService.findPatientById(patientId));
 		return "edit_patient";
 	}
+
 
 	@PostMapping(value = "update_patient")
 	public String updatePatient(@ModelAttribute("patient") Patient patient) {

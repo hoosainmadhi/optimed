@@ -22,8 +22,7 @@
 		<p th:text="'Consult Date: ' + ${consult.consultDate}" />
 		<p th:text="'Reservation Number: ' + ${consult.reservationNumber}" />
 
-
-        <a th:href="@{/patient/{id}(id=${patient.patientId})} + '/consult'"> Back to Consult</a>
+        <a th:href="@{/edit/patient/{pid}/consult/{cid}/(pid=${patient.patientId},cid=${consult.consultId})}"> Edit Consult Details</a>
 	
 		<br>
 		<br>

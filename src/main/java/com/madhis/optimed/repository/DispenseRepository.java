@@ -2,6 +2,9 @@
 package com.madhis.optimed.repository;
 
 import com.madhis.optimed.entity.Dispense;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,6 +21,16 @@ public interface DispenseRepository extends JpaRepository<Dispense, Long>{
             nativeQuery = true
     )
 	java.lang.Float totalPerConsultId(Long consultId);
+
+
+    //Native Query
+    @Query(
+    		value = "SELECT d.* from consult c ,dispense d " 
+    				+ " where c.consult_id = d.consult_id " 
+    			    + "	and c.consult_id=9 ", 
+    	    nativeQuery = true
+    )
+	List<Dispense> findDispensesByConsultId(Long consultId);
 
 
 	
