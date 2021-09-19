@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,7 +59,12 @@ class PatientRestController {
 	@PutMapping({"/rest_update_patient/{id}"})
 	public void updatePatient(@RequestBody Patient patient, @PathVariable(value="id") Long patientId){
 		patientService.updatePatient(patientId, patient);
-	}	
+	}
+	
+	@PutMapping("/rest_upd_patient")
+		public Patient updPatient(@RequestBody Patient patient){
+			return  patientService.savePatient(patient);
+	}
 
         
 }

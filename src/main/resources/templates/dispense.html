@@ -28,7 +28,7 @@
 		<br>
 		
 		<h2>Script</h2>
-		<table border="1" cellpadding="10px" cellspacing="5px">
+		<table class="table table-striped table-sm">
 			<tr>
 				<th>Left Eye</th>
 				<th>Right Eye</th>
@@ -42,6 +42,8 @@
 				<td th:text="${consult.script.pd}" /></td>
 			</tr>
 		</table>
+		
+		
 		<br>
 		<h2>Dispense Details</h2>
 
@@ -50,7 +52,7 @@
 		<form action="#"
 			th:action="@{'/patient/' + ${patient.patientId} + '/consult/' + ${consult.consultId}}"
 			method="post" th:object="${dispense}">
-			<table border="1" cellpadding="10px" cellspacing="5px">
+			<table class="table table-striped" border="1" cellpadding="10px" cellspacing="5px">
 				<tr>
 					<th>ICD10</th>
 					<th>Tariff Code</th>
@@ -63,7 +65,9 @@
 					<td><input type="text" th:field="${dispense.dispenseItem}" /></td>
 					<td><input type="text" th:field="${dispense.price}" /></td>
 				</tr>
-				<tr>
+			</table>
+			<table>
+			    <tr>
 					<td><input type="submit" value="Add Item" /></td>
 					<td><input type="reset" value="Reset" /></td>
 				</tr>
@@ -74,7 +78,7 @@
 
 		<!--<someHtmlTag th:each="item : ${items}">-->
 		<!--</someHtmlTag>-->
-		<table border="1" cellpadding="10px" cellspacing="5px">
+		<table class="table table-striped" border="1" cellpadding="10px" cellspacing="5px">
 			<thead>
 				<th>Delete</th>
 				<th>ICD10</th>
@@ -83,7 +87,7 @@
 				<th>Price</th>
 			</thead>
 			<tr th:each="dispense: ${consult.dispenses}">
-				<td align="center"><a
+				<td align="left"><a
 					th:href="@{/delete/patient/{pid}/consult/{cid}/dispense/{did}(pid=${patient.patientId},cid=${consult.consultId},did=${dispense.dispenseId})}">x</a>
 				</td>
 				<td th:text="${dispense.icd10}"></td>

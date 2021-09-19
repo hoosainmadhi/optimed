@@ -47,6 +47,13 @@ public class PatientServiceImpl implements PatientService {
 		patientRepository.save(patientFromDb);
 	}
 
+	
+	// does not work so nicely - with orphanRemoval = true - need to research
+	@Override 
+	public void updPatient(Patient patient){
+		patientRepository.save(patient);
+	}
+
 	@Override
 	public void deletePatientById(Long patientId){
 		patientRepository.deleteById(patientId);

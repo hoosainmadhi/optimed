@@ -92,4 +92,5 @@ public class PatientController {
 		patientService.updatePatient(patientId, patient);
 		return "redirect:/patients";
 	}
+
 }

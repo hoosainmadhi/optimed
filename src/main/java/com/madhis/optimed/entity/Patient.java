@@ -66,7 +66,7 @@ public class Patient {
     // Define 1-Many Relation Patient can come for many consults.
     @OneToMany(
 	    cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
+        fetch = FetchType.LAZY,
 	    orphanRemoval = true
     )
     @JoinColumn(
