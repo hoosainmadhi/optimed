@@ -44,6 +44,11 @@ public class PatientServiceImpl implements PatientService {
 		patientFromDb.setPatientNumber(patient.getPatientNumber());
 		patientFromDb.setMedicalAid(patient.getMedicalAid());
 		patientFromDb.setMedicalAidNumber(patient.getMedicalAidNumber());
+		patientFromDb.setDob(patient.getDob());
+		patientFromDb.setPostalAddress(patient.getPostalAddress());
+		patientFromDb.setEmail(patient.getEmail());
+		patientFromDb.setTelNo(patient.getTelNo());
+		patientFromDb.setPrincipalMember(patient.getPrincipalMember());
 		patientRepository.save(patientFromDb);
 	}
 
@@ -57,5 +62,11 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public void deletePatientById(Long patientId){
 		patientRepository.deleteById(patientId);
+	}
+	
+	@Override
+	
+	public Patient findByPatientNumber(String patientNumber) {
+		return patientRepository.findByPatientNumber(patientNumber);
 	}
 }

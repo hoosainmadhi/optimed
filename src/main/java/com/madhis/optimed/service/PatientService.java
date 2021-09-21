@@ -20,5 +20,7 @@ public interface PatientService {
     public void updatePatient(Long id, Patient patient);
 
 	void updPatient(Patient patient);
+	
+	public Patient findByPatientNumber(String patientNumber);
     
 }

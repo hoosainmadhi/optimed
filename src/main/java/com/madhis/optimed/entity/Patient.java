@@ -12,7 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.type.TrueFalseType;
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,12 +34,11 @@ import lombok.ToString;
 @Entity
 @Table(
         name = "Patient"
-        //uniqueConstraints = @UniqueConstraint(
-        //        name="patient_number_unique",
-        //        columnNames="patientNumber"
-        //)
-       )
-
+//        uniqueConstraints = @UniqueConstraint(
+//                name="patient_number_unique",
+//                columnNames="patientNumber"
+//        )
+)
 public class Patient {
     
     @Id
@@ -46,23 +51,30 @@ public class Patient {
             strategy = GenerationType.SEQUENCE,
             generator = "patient_sequence"
     )
-
-    
     private Long patientId;
     
     @Column(name = "patientNumber",
-            nullable = false
+            nullable = false,
+            unique = true
     )
     private String patientNumber;
 
-    @NotEmpty(message = "User's name cannot be empty.")
+    @NotEmpty(message = "Patient Name cannot be empty.")
     private String patientName;
+    
     private String medicalAid;
     private String medicalAidNumber;
+    
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private String dob;
+    
     private String postalAddress;
     private String telNo;
     private String principalMember;
+    
+    @Email
+    private String email;
+    
     // Define 1-Many Relation Patient can come for many consults.
     @OneToMany(
 	    cascade = CascadeType.ALL,

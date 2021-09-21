@@ -3,6 +3,7 @@ package com.madhis.optimed.controller;
 import com.madhis.optimed.entity.Consult;
 import com.madhis.optimed.entity.Patient;
 import com.madhis.optimed.service.PatientService;
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -43,6 +44,7 @@ public class PatientController {
 		Patient patient = new Patient();
 		model.addAttribute("patient", patient);
 		return "new_patient";
+		
 	}
 
 	@RequestMapping(value = "/patient/{id}/consult", method = { RequestMethod.GET })
@@ -69,14 +71,30 @@ public class PatientController {
 		return patientService.savePatient(patient);
 	}
 
-	// save patient form and redirect to consults page
-	@RequestMapping(value = "/save_patient", method = { RequestMethod.POST })
+	// CAN DELETE  save patient form and redirect to consults page
+	@RequestMapping(value = "/save_patient_", method = { RequestMethod.POST })
 	public String submitForm(Model model, @ModelAttribute("patient") Patient patient) {
 		Consult consult = new Consult();
 		model.addAttribute("consult", consult);
 		patientService.savePatient(patient);
 		return "consult";
 	}
+
+	// save patient form and redirect to consults page
+	@RequestMapping(value = "/save_patient", method = { RequestMethod.POST })
+	public String submitPatientForm(@Valid Patient patient ,BindingResult result , Model model) {
+		
+		
+		if (result.hasErrors()) {
+			return "new_patient";
+		}
+		
+		Consult consult = new Consult();
+		model.addAttribute("consult", consult);
+		patientService.savePatient(patient);
+		return "consult";
+	}
+	
 	
 
 	@GetMapping(path = "edit_patient/{id}")
@@ -89,6 +107,7 @@ public class PatientController {
 	@PostMapping(value = "update_patient")
 	public String updatePatient(@ModelAttribute("patient") Patient patient) {
 		Long patientId = patient.getPatientId();
+		System.out.println("patientId = " + patientId);
 		patientService.updatePatient(patientId, patient);
 		return "redirect:/patients";
 	}
