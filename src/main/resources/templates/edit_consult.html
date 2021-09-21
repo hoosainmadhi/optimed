@@ -31,7 +31,7 @@
 		<form action="#"
 			th:action="@{'/update/patient/' + ${patient.patientId} + '/consult/' + ${consult.consultId}}"
 			method="post" th:object="${consult}">
-			<table border="1" cellpadding="10px" cellspacing="5px">
+			<table table-bordered>
 				<tr>
 					<th>Consult Date</th>
 					<th>Reservation Number</th>
