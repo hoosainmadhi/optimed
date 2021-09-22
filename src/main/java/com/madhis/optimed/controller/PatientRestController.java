@@ -19,43 +19,47 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
+
+@RequestMapping("/api")
 class PatientRestController {
 
 	@Autowired
 	private PatientService patientService;
 
 
-	@RequestMapping(value = "/rest",method = {RequestMethod.GET}) 
+	@RequestMapping(value = "/",method = {RequestMethod.GET}) 
 	public String index(){
 		return "welcome - Rest Controller Managing all Rest calls";
 	}
 
 
-	@RequestMapping(value = "/rest_patients",method = {RequestMethod.GET})
+	@RequestMapping(value = "/patients",method = {RequestMethod.GET})
 	public List<Patient> fetchPatientList(@Param("keyword") String keyword){
 		return patientService.fetchPatientList(keyword);
 	}
 
 	//@RequestMapping(value = "/rest_get_patient/{id}", method = {RequestMethod.GET})
-	@GetMapping(value = "/rest_get_patients/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "/patient/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Patient getPatientById(@PathVariable(value="id") Long patientId){
 		return patientService.findPatientById(patientId);	
 	} 	
 
-	@RequestMapping(value= "/rest_savepatient", method = {RequestMethod.POST})
+//	@RequestMapping(value= "/patient", method = {RequestMethod.POST})
+	@PostMapping("/patient")
 	public Patient savePatient(@RequestBody Patient patient){
+		
 		return patientService.savePatient(patient);
 	}
 
 
-	@RequestMapping(value= "/rest_delete_patient/{id}", method = {RequestMethod.DELETE})
+	@RequestMapping(value= "/patient/{id}", method = {RequestMethod.DELETE})
 	public void deletePatientById(@PathVariable(value="id") Long patientId){
 		patientService.deletePatientById(patientId);
 	}
 
 
 	//@RequestMapping(value="/rest_update_patient/{id}", method = {RequestMethod.PUT})
-	@PutMapping({"/rest_update_patient/{id}"})
+	@PutMapping({"/patient/{id}"})
 	public void updatePatient(@RequestBody Patient patient, @PathVariable(value="id") Long patientId){
 		patientService.updatePatient(patientId, patient);
 	}
