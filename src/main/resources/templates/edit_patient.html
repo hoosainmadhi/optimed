@@ -67,7 +67,7 @@
 						<br>
 						<div class="form-group">
 							<label for="dob">Date of Birth</label> <input
-								class="form-control" type="text" th:field="*{dob}" id="dob">
+								class="form-control" type="date" th:field="*{dob}" id="dob">
 							<div class="alert alert-warning"
 								th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
 						</div>

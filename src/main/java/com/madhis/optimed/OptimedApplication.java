@@ -10,4 +10,5 @@ public class OptimedApplication {
 		SpringApplication.run(OptimedApplication.class, args);
 	}
 
+
 }

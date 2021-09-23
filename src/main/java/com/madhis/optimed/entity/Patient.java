@@ -1,5 +1,6 @@
 package com.madhis.optimed.entity;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,12 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
 
-import org.hibernate.type.TrueFalseType;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
@@ -66,7 +65,8 @@ public class Patient {
     private String medicalAidNumber;
     
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private String dob;
+    @Past(message="That's not possible")
+    private Date dob;
     
     private String postalAddress;
     private String telNo;

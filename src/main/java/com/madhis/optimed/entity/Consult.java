@@ -3,17 +3,17 @@ package com.madhis.optimed.entity;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,7 +41,11 @@ public class Consult {
             strategy = GenerationType.SEQUENCE,
             generator = "consult_sequence"
     )
+    
     private Long consultId;
+    
+    
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private String consultDate;
     private String reservationNumber;
  
