@@ -1,8 +1,6 @@
 package com.madhis.optimed.service;
 
 import com.madhis.optimed.entity.Consult;
-import com.madhis.optimed.entity.Patient;
-import com.madhis.optimed.entity.Script;
 import com.madhis.optimed.repository.ConsultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
