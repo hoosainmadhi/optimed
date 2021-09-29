@@ -17,7 +17,7 @@
 		<h2>Patient Consult Detail</h2>
 		<p th:text="'Patient Name: ' + ${patient.patientName}" />
 		<p th:text="'Consult Id: ' + ${consult.consultId}" />
-		<p th:text="'Consult Date: ' + ${#dates.format(consult.consultDate, 'yyyy-MM-dd')}" />
+		<p th:text="'Consult Date: ' + ${consult.consultDate}" />
 		<p th:text="'Reservation Number: ' + ${consult.reservationNumber}" />
 
 		<a

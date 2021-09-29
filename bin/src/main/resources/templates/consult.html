@@ -94,7 +94,7 @@
 						<td><a
 							th:href="@{/edit/patient/{pid}/consult/{cid}/(pid=${patient.patientId},cid=${consult.consultId})}">
 								Edit Consult Details</a></td>
-						<td th:text="${#dates.format(consult.consultDate, 'yyyy-MM-dd')}"></td>
+						<td th:text="${consult.consultDate}"></td>
 						<td th:text="${consult.reservationNumber}"></td>
 
 						<td><a

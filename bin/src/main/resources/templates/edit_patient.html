@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1"></meta>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+
+<title>Patient Details</title>
+</head>
+<body>
+	<div align="left">
+		<h1>Patient Details</h1>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3">
+					<form action="#" th:action="@{/update_patient}" method="post"
+						th:object="${patient}">
+						
+						<div class="form-group">
+							<label for="patientId">Patient Id </label> <input
+								class="form-control" type="text" th:field="*{patientId}"
+								id="patientId" readonly="readonly">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('patientId')}"
+								th:errors="*{patientId}"></div>
+						</div>
+						<br>	
+						<div class="form-group">
+							<label for="patientNumber">Patient Number</label> <input
+								class="form-control" type="text" th:field="*{patientNumber}"
+								id="patientNumber">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('patientNumber')}"
+								th:errors="*{patientNumber}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="patientName">Patient Name</label> <input
+								class="form-control" type="text" th:field="*{patientName}"
+								id="patientName">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('patientName')}"
+								th:errors="*{patientName}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="medicalAid">Medical Aid</label> <input
+								class="form-control" type="text" th:field="*{medicalAid}"
+								id="medicalAid">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('medicalAid')}"
+								th:errors="*{medicalAid}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="medicalAidNumber">Medical Aid Number</label> <input
+								class="form-control" type="text" th:field="*{medicalAidNumber}"
+								id="medicalAidNumber">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('medicalAidNumber')}"
+								th:errors="*{medicalAidNumber}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="dob">Date of Birth</label> <input
+								class="form-control" type="date" th:field="*{dob}" id="dob">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="postalAddress">PostalAddress</label> <input
+								class="form-control" type="text" th:field="*{postalAddress}"
+								id="postalAddress">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('postalAddress')}"
+								th:errors="*{postalAddress}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="email">email</label> <input class="form-control"
+								type="text" th:field="*{email}" id="email">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+
+							<label for="telNo">Tel No</label> <input class="form-control"
+								type="text" th:field="*{telNo}" id="telNo">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('telNo')}" th:errors="*{telNo}"></div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="principalMember">Principal Member</label> <input
+								class="form-control" type="text" th:field="*{principalMember}"
+								id="principalMember">
+							<div class="alert alert-warning"
+								th:if="${#fields.hasErrors('principalMember')}"
+								th:errors="*{principalMember}"></div>
+						</div>
+						<!-- 	<p>
+				Patient Id <input type="text" th:field="*{patientId}"
+					readonly="readonly" />
+			</p>
+			<p>
+				Patient Number: <input type="text" th:field="*{patientNumber}" />
+			</p>
+			<p>
+				Patient Name: <input type="text" th:field="*{patientName}" />
+			</p>
+			<p>
+				Medical Aid: <input type="text" th:field="*{medicalAid}" />
+			</p>
+			<p>
+				Medical Aid Number: <input type="text"
+					th:field="*{medicalAidNumber}" />
+			</p>-->
+
+						<br> <input type="submit" value="Update Patient" /> <input
+							type="reset" value="Reset" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<a href="/patients">Patients</a>
+	</div>
+</body>
+</html>

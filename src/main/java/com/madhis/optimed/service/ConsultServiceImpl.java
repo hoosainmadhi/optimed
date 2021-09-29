@@ -36,6 +36,7 @@ public class ConsultServiceImpl implements ConsultService {
 		System.out.println("consultFromDb = " + consultFromDb);
 		consultFromDb.setConsultDate(consult.getConsultDate());
 		consultFromDb.setReservationNumber(consult.getReservationNumber());
+		consultFromDb.setScript(consult.getScript());
 		consultRepository.save(consultFromDb);
     } 
 }

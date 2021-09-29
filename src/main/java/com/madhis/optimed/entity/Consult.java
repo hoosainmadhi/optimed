@@ -1,5 +1,6 @@
 package com.madhis.optimed.entity;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -46,7 +47,7 @@ public class Consult {
     
     
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private String consultDate;
+    private Date consultDate;
     private String reservationNumber;
  
    //Define 1-Many  Relation consult has many dispense items 

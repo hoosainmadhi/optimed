@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/patients}]]";
+    }
+</script>
+
+<title>Optimed</title>
+</head>
+<body>
+
+	<div align="center">
+		<br>
+		<form th:action="@{/patients}">
+			Search: <input type="text" name="keyword" id="keyword" size="50"
+				th:value="${keyword}" required /> &nbsp; <input type="submit"
+				value="Search" /> &nbsp; <input type="button" value="Clear"
+				id="btnClear" onclick="clearSearch()" />
+		</form>
+		<h1>Patients</h1>
+
+
+		<br />
+		<br />
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Patient Name</th>
+					<th>Patient Number</th>
+					<th>Medical Aid</th>
+					<th>Medical Aid Number</th>
+					<th>Consult Details</th>
+					<th>Edit/Delete</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="patient : ${listPatients}">
+
+					<td th:text="${patient.patientId}">Id</td>
+					<td th:text="${patient.patientName}">Patient Name</td>
+					<td th:text="${patient.patientNumber}">Patient Number</td>
+					<td th:text="${patient.medicalAid}">Medical Aid</td>
+					<td th:text="${patient.medicalAidNumber}">Medical Aid Number</td>
+					<td><a
+						th:href="@{/patient/{id}(id=${patient.patientId})} + '/consult'">Consult</a>
+					<td><a
+						th:href="@{/edit_patient/{id}(id=${patient.patientId})}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a
+						th:href="@{/delete/{id}(id=${patient.patientId})}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/new_patient">Add New Patient</a><br> <a
+			href="/patients">Patients</a>
+	</div>
+</body>
+</html>

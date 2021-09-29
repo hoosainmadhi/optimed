@@ -1,0 +1,81 @@
+ create_table "consults", :force => true do |t|
+    t.integer  "patient_id"
+    t.datetime "service_date"
+    t.string   "reservation_number"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "dispenses", :force => true do |t|
+    t.integer  "consult_id"
+    t.string   "dispense_item"
+    t.string   "dispense_code"
+    t.decimal  "price"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "patients", :force => true do |t|
+    t.string   "patient_number"
+    t.string   "patient_name"
+    t.string   "medical_aid"
+    t.string   "medical_aid_number"
+    t.string   "principal_member"
+    t.string   "postal_address"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "tel_no"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "scripts", :force => true do |t|
+    t.integer  "consult_id"
+    t.string   "right_eye_script"
+    t.string   "left_eye_script"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+end
+
+
+patient_id patient_name patient_number medical_aid medical_aid_number
+1          John Doe     M100           Discover    DIS1234
+2          Jane Doe     M111           Discover    DIS12233
+
+consult_id patient_id service_date reservation_number
+1          1          2021/08/01   1234
+2          2          2021/07/01   
+
+
+dispenseId consult_id icd10 tarrif_code item price
+
+script
+
+
+
+
+category_id category
+1           eye_test
+2           frame
+3           lens
+4           other
+
+tariff_id tarrif_code tarrif_description price
+1         2000        Eye Test           500  
+2         2213        
+3         9093
+
+
+
+dispenseId consult_id category_id category  tarrif_code price
+1           1           1         eye_test  2000         800
+2           1           2         frame     2213          400
+3           1           3         lens      9093          300
+4           1           4         other     8000          400
+5           2           1         eye_test  11111         800    
+6           2           2         frame     2333          600           
+7           3           1         eye_test  11111         600    
+8           4           1         eye_test  11111         600
+     
