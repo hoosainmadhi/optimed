@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00989f5e-6dd9-4e61-95e2-ada4505e5c26">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="optimed"/>
+	<queryString language="SQL">
+		<![CDATA[select p.patient_name , p.patient_number ,p.medical_aid_number ,p.medical_aid_number, p.dob ,p.email ,p.postal_address,
+c.consult_date ,c.reservation_number ,s.left_eye ,s.right_eye,s.pd,s.addition ,
+d.icd10 ,d.dispense_item ,d.tariff_code ,d.price 
+from patient p , consult c , script s ,dispense d
+where p.patient_id =c.patient_id 
+and c.consult_id = d.consult_id 
+and  c.fk_script_id =s.script_id]]>
+	</queryString>
+	<field name="patient_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="patient_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="medical_aid_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="medical_aid_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="medical_aid_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dob" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dob"/>
+		<property name="com.jaspersoft.studio.field.label" value="dob"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="postal_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="postal_address"/>
+		<property name="com.jaspersoft.studio.field.label" value="postal_address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="patient"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="consult_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="consult_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="consult_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="consult"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reservation_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reservation_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="reservation_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="consult"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="left_eye" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="left_eye"/>
+		<property name="com.jaspersoft.studio.field.label" value="left_eye"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="script"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="right_eye" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="right_eye"/>
+		<property name="com.jaspersoft.studio.field.label" value="right_eye"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="script"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pd" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pd"/>
+		<property name="com.jaspersoft.studio.field.label" value="pd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="script"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="addition" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="addition"/>
+		<property name="com.jaspersoft.studio.field.label" value="addition"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="script"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="icd10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="icd10"/>
+		<property name="com.jaspersoft.studio.field.label" value="icd10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispense"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dispense_item" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dispense_item"/>
+		<property name="com.jaspersoft.studio.field.label" value="dispense_item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispense"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tariff_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tariff_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="tariff_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispense"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="price" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="price"/>
+		<property name="com.jaspersoft.studio.field.label" value="price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dispense"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="75" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="ae5c33e6-b5f2-498e-a6b7-cf3e58114077"/>
+				<textFieldExpression><![CDATA[$F{patient_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="100" height="30" uuid="5f3c131f-e01e-407b-bb4d-c51b30dbc506"/>
+				<textFieldExpression><![CDATA[$F{medical_aid_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="40" width="100" height="30" uuid="464c73b4-ab0c-4208-af19-41e4f357386e"/>
+				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-13" y="0" width="100" height="30" uuid="1daa0854-1f04-4198-9d3a-746ea315ce62">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6dbb1061-dd76-471e-80ad-cdcacc3b7070"/>
+				</reportElement>
+				<text><![CDATA[icd10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="0" width="100" height="30" uuid="8ed98fef-1f82-4b6d-9f80-5bc31c5504aa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aa5f1bd5-4064-4d91-93cf-b870a06b2263"/>
+				</reportElement>
+				<text><![CDATA[tariff_code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="100" height="30" uuid="5764bf51-698d-4e5c-8e8c-a69f69dda9a5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e412cc2-63a7-47d3-bed6-678d87b8d209"/>
+				</reportElement>
+				<text><![CDATA[dispense_item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="100" height="30" uuid="bf2d270a-cf83-494d-99b9-6a30e827e079">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1ba7a95-6a3b-4107-870b-b5d8c4be0d1a"/>
+				</reportElement>
+				<text><![CDATA[price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="-17" y="9" width="100" height="30" uuid="e8d493df-221e-4372-879a-4cd617e05e09">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6dbb1061-dd76-471e-80ad-cdcacc3b7070"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{icd10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="8" width="100" height="30" uuid="977372a9-bf94-4e9d-85d5-eb5cb9573a4a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aa5f1bd5-4064-4d91-93cf-b870a06b2263"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{tariff_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="8" width="100" height="30" uuid="54b040f5-0994-47a0-981b-e3a5770463af">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e412cc2-63a7-47d3-bed6-678d87b8d209"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{dispense_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="10" width="100" height="30" uuid="1e2e6362-e03e-45a7-986a-3bcc8df9b977">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1ba7a95-6a3b-4107-870b-b5d8c4be0d1a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="2" width="100" height="30" uuid="35a369e3-bd81-427d-a384-a1cd5fb9f449"/>
+				<textFieldExpression><![CDATA[$F{left_eye}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-13" y="21" width="100" height="30" uuid="3003592f-9f22-4c67-a28e-e5e3b667e65e"/>
+				<textFieldExpression><![CDATA[$F{right_eye}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="2" width="100" height="30" uuid="7fef073a-710f-4b76-94ce-0a2571c9fc9f"/>
+				<textFieldExpression><![CDATA[$F{pd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="21" width="100" height="30" uuid="a7f6029f-41a1-461c-b678-23735dd4e01a"/>
+				<textFieldExpression><![CDATA[$F{addition}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
