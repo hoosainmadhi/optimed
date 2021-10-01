@@ -1,17 +1,29 @@
 
 package com.madhis.optimed.controller;
 
+import com.madhis.optimed.dto.ReportDTO;
 import com.madhis.optimed.entity.Consult;
+import com.madhis.optimed.entity.Dispense;
 import com.madhis.optimed.entity.Patient;
+import com.madhis.optimed.repository.ConsultRepository;
+import com.madhis.optimed.repository.DispenseRepository;
+import com.madhis.optimed.repository.PatientRepository;
 import com.madhis.optimed.service.ConsultService;
 import com.madhis.optimed.service.PatientService;
+import com.madhis.optimed.service.ReportService;
+
+import net.sf.jasperreports.engine.JRException;
+
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 //@RestController for Postman
@@ -23,11 +35,29 @@ class ConsultRestController {
    
     @Autowired
     private PatientService patientService;
+  
+    @Autowired
+    private DispenseRepository dispenseRepository;
    
+    @Autowired
+    private ReportService  reportService;
 
        @RequestMapping(value = "/api/consults",method = {RequestMethod.GET}) 
         public String index(){
             return "welcome - Consults Rest Controller";
+        }
+       
+       
+       @RequestMapping(value = "/api/invoice/{consultId}",method = {RequestMethod.GET}) 
+        public List<ReportDTO> invoice(@PathVariable(value="consultId")Long consultId){
+//    	  System.out.println("invoice = " + dispenseRepository.findInvoiceByConsultId(consultId)); 
+    	   return dispenseRepository.findInvoiceByConsultId(consultId);
+        }
+
+       @RequestMapping(value = "/api/printInvoice/{consultId}",method = {RequestMethod.GET}) 
+        public String printInvoice(@PathVariable(value="consultId")Long consultId) throws FileNotFoundException, JRException{
+    	   reportService.exportReport(consultId);
+    	   return "pdf";
         }
     
        @RequestMapping(value= "/patient/{patientId}/consult", method = {RequestMethod.POST})

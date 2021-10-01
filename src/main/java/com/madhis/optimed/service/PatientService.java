@@ -1,5 +1,6 @@
 package com.madhis.optimed.service;
 
+import com.madhis.optimed.dto.ReportDTO;
 import com.madhis.optimed.entity.Patient;
 import java.util.List;
 
@@ -22,5 +23,8 @@ public interface PatientService {
 	void updPatient(Patient patient);
 	
 	public Patient findByPatientNumber(String patientNumber);
+
+//	public  List<ReportDTO> getAllReportDTO();
+	
     
 }

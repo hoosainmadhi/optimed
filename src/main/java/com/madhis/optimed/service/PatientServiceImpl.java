@@ -1,5 +1,7 @@
 package com.madhis.optimed.service;
 
+import com.madhis.optimed.dto.ReportDTO;
+import com.madhis.optimed.entity.Consult;
 import com.madhis.optimed.entity.Patient;
 import com.madhis.optimed.repository.PatientRepository;
 import java.util.List;
@@ -69,4 +71,19 @@ public class PatientServiceImpl implements PatientService {
 	public Patient findByPatientNumber(String patientNumber) {
 		return patientRepository.findByPatientNumber(patientNumber);
 	}
+	
+//	public  List<ReportDTO> getAllReportDTO(){
+//		return null;
+//	}
+
+	
+//	private ReportDTO convertEntityToDto(Patient patient) {
+//		ReportDTO reportDTO = new ReportDTO();
+//		reportDTO.setPatientName(patient.getPatientName());
+//		return reportDTO;
+		
+		
+//	}
+		
+	
 }
